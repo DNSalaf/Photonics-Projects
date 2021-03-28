@@ -29,20 +29,20 @@ figure(1)
     ylabel('Amplitude (u.a.)');
     title('Interferômetro Mach-Zehnder');
 
-% figure(2)
-%     plot(lambda/nm, A); hold on;
-%     plot(lambda/nm, B);
-%     xlabel('Comprimento de Onda (nm)');
-%     ylabel('Amplitude (u.a.)');
-%     title('Interferômetro Mach-Zehnder');
-% 
-% Temp = 27:50;
-% ddz = 0.05e-6*(Temp-27);
-% figure(3)
-%     plot(Temp, ddz/nm);
-%     xlabel('Temperatura (ºC)');
-%     ylabel('Dilatamento (nm)');
-%     title('Dilatamento linear da fibra em função da Temperatura ');
+figure(2)
+    plot(lambda/nm, db(A,'power'));
+    xlabel('Comprimento de Onda (nm)');
+    ylabel('Amplitude (dB)');
+    title('Interferômetro Mach-Zehnder');
+    axis([1400 1600 -40 10])
+ 
+Temp = 27:50;
+ddz = 0.05e-6*(Temp-27);
+figure(3)
+    plot(Temp, ddz/nm);
+    xlabel('Temperatura (ºC)');
+    ylabel('Dilatamento (nm)');
+    title('Dilatamento linear da fibra em função da Temperatura ');
     
     
     
