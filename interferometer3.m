@@ -32,7 +32,17 @@ figure(1)
     xlabel('Comprimento de Onda (nm)');
     ylabel('Amplitude (u.a.)');
     title('Interferômetro Mach-Zehnder');
-    axis([1480 1520 0 2])
+    axis([1460 1540 0 2])
+    
+figure(2)
+    plot(lambda/nm, db(A(1,:),'power')); hold on
+    plot(lambda/nm, db(A(5,:),'power'));
+    plot(lambda/nm, db(A(10,:),'power'));
+    plot(lambda/nm, db(A(15,:),'power'));
+    xlabel('Comprimento de Onda (nm)');
+    ylabel('Amplitude (dB)');
+    title('Interferômetro Mach-Zehnder');
+    axis([1460 1540 -40 20])
 % figure(2)
 %     plot(lambda/nm, A); hold on;
 %     plot(lambda/nm, B);
