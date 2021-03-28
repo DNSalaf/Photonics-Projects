@@ -33,16 +33,28 @@ figure(1)
     ylabel('Amplitude (u.a.)');
     title('Interferômetro Mach-Zehnder');
     axis([1460 1540 0 2])
+
+[M,ind] = max(A(1,1:575));
+lambda0 = lambda(ind);
+
+desloc = zeros(length(dz),1);
+desloc(1) = lambda0;
+
+for m = 2:length(dz)
+   [M,ind] = max(A(m,463:575));
+   desloc(m) = lambda(ind+462);
+end
     
-figure(2)
-    plot(lambda/nm, db(A(1,:),'power')); hold on
-    plot(lambda/nm, db(A(5,:),'power'));
-    plot(lambda/nm, db(A(10,:),'power'));
-    plot(lambda/nm, db(A(15,:),'power'));
-    xlabel('Comprimento de Onda (nm)');
-    ylabel('Amplitude (dB)');
-    title('Interferômetro Mach-Zehnder');
-    axis([1460 1540 -40 20])
+    
+% figure(2)
+%     plot(lambda/nm, db(A(1,:),'power')); hold on
+%     plot(lambda/nm, db(A(5,:),'power'));
+%     plot(lambda/nm, db(A(10,:),'power'));
+%     plot(lambda/nm, db(A(15,:),'power'));
+%     xlabel('Comprimento de Onda (nm)');
+%     ylabel('Amplitude (dB)');
+%     title('Interferômetro Mach-Zehnder');
+%     axis([1460 1540 -40 20])
 % figure(2)
 %     plot(lambda/nm, A); hold on;
 %     plot(lambda/nm, B);
@@ -50,13 +62,13 @@ figure(2)
 %     ylabel('Amplitude (u.a.)');
 %     title('Interferômetro Mach-Zehnder');
 % 
-% Temp = 27:50;
-% ddz = 0.05e-6*(Temp-27);
-% figure(3)
-%     plot(Temp, ddz/nm);
-%     xlabel('Temperatura (ºC)');
-%     ylabel('Dilatamento (nm)');
-%     title('Dilatamento linear da fibra em função da Temperatura ');
+Temp = 27:50;
+figure(3)
+    plot(Temp, desloc/nm,'.');
+    xlabel('Temperatura (ºC)');
+    ylabel('Comp de Onda Central (nm)');
+    title('Comp. de Onda Central \times Temperatura ');
+    legend('sensitividade = 0.8008 nm/ºC')
     
     
     
